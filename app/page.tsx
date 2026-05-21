@@ -3,6 +3,17 @@ import { projects, getProject } from "@/lib/projects";
 import { MediaPlaceholder } from "./components/MediaPlaceholder";
 import { YouTubeEmbed } from "./components/YouTubeEmbed";
 import { ProjectCard } from "./components/ProjectCard";
+import { BdxDroidBody } from "./projects/bdx-droid/body";
+import { LeKiwiGr00tBody } from "./projects/lekiwi-gr00t/body";
+import { ActChessBody } from "./projects/act-chess/body";
+import { HackathonBody } from "./projects/hackathon/body";
+
+const bodyBySlug: Record<string, React.ReactNode> = {
+  "bdx-droid": <BdxDroidBody />,
+  "lekiwi-gr00t": <LeKiwiGr00tBody />,
+  "act-chess": <ActChessBody />,
+  hackathon: <HackathonBody />,
+};
 
 export default function Home() {
   return (
@@ -77,7 +88,9 @@ function Projects() {
         </header>
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
           {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+            <ProjectCard key={p.slug} project={p}>
+              {bodyBySlug[p.slug]}
+            </ProjectCard>
           ))}
         </div>
       </div>
