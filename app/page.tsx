@@ -96,22 +96,38 @@ function Projects() {
           {chunk(projects, 2).map((row, i) => (
             <div key={i} className="project-row-side relative">
               {row[0] ? (
-                <aside
-                  aria-hidden
-                  className="project-panel project-panel-left"
-                >
+                <aside className="project-panel project-panel-left">
                   <div className="project-panel-inner">
                     {bodyBySlug[row[0].slug]}
+                    {row[0].linkedinUrl ? (
+                      <a
+                        href={row[0].linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-2 border border-ink/25 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink/75 transition-colors hover:border-ink hover:text-ink"
+                      >
+                        View on LinkedIn
+                        <span aria-hidden>&#8599;</span>
+                      </a>
+                    ) : null}
                   </div>
                 </aside>
               ) : null}
               {row[1] ? (
-                <aside
-                  aria-hidden
-                  className="project-panel project-panel-right"
-                >
+                <aside className="project-panel project-panel-right">
                   <div className="project-panel-inner">
                     {bodyBySlug[row[1].slug]}
+                    {row[1].linkedinUrl ? (
+                      <a
+                        href={row[1].linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-2 border border-ink/25 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink/75 transition-colors hover:border-ink hover:text-ink"
+                      >
+                        View on LinkedIn
+                        <span aria-hidden>&#8599;</span>
+                      </a>
+                    ) : null}
                   </div>
                 </aside>
               ) : null}

@@ -42,6 +42,19 @@ export function ProjectShell({ project, children }: ProjectShellProps) {
             </span>
           ))}
         </div>
+        {project.linkedinUrl ? (
+          <div className="pt-3">
+            <a
+              href={project.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-ink/25 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-ink/75 transition-colors hover:border-ink hover:text-ink"
+            >
+              View original on LinkedIn
+              <span aria-hidden>&#8599;</span>
+            </a>
+          </div>
+        ) : null}
       </header>
 
       <div className="mt-8">

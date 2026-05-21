@@ -32,6 +32,8 @@ export const projects: Project[] = [
     ],
     mediaPlaceholder: "BDX droid walking on grass",
     youtubeId: "5-WnzBsH1KU",
+    linkedinUrl:
+      "https://www.linkedin.com/posts/heyitsme_nvidia-robotics-opensource-ugcPost-7369288109567455235-WQJm",
   },
   {
     slug: "lekiwi-gr00t",
@@ -51,6 +53,8 @@ export const projects: Project[] = [
     ],
     mediaPlaceholder: "LeKiwi + GR00T N1 inference on Jetson",
     youtubeId: "xEyELB9Vrjc",
+    linkedinUrl:
+      "https://www.linkedin.com/posts/heyitsme_nvidia-robotics-edgeai-activity-7318386968873091073-ZwLZ",
   },
   {
     slug: "act-chess",
@@ -70,6 +74,8 @@ export const projects: Project[] = [
     ],
     mediaPlaceholder: "ACT chess pick-and-place demo",
     youtubeId: "qoUHfi-56-w",
+    linkedinUrl:
+      "https://www.linkedin.com/posts/heyitsme_lerobot-robotics-nvidia-activity-7253680095637184512-YZCk",
   },
   {
     slug: "hackathon",
@@ -83,6 +89,8 @@ export const projects: Project[] = [
     tags: ["Pi0 VLA", "ACT", "H100", "LeKiwi", "LeRobot"],
     mediaPlaceholder: "Seeed x NVIDIA hackathon — LeKiwi build",
     youtubeId: "B4zv8M9mojI",
+    linkedinUrl:
+      "https://www.linkedin.com/posts/heyitsme_robotics-nvidia-seeedstudio-activity-7310039562485989377-4PeF",
   },
 ];
 
