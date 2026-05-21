@@ -24,22 +24,74 @@ body {
   color: var(--color-paper);
 }
 
+.project-row-tiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
 @media (min-width: 1024px) {
-  .project-row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3.5rem;
+  .project-row-tiles {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 22rem);
+    column-gap: 2rem;
+    justify-content: center;
+  }
+}
+
+.project-panel {
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  .project-panel {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 18rem;
+    opacity: 0;
+    pointer-events: none;
     transition:
-      grid-template-columns 500ms ease-out,
-      column-gap 500ms ease-out;
+      opacity 300ms ease-out,
+      transform 400ms ease-out;
+    z-index: 5;
   }
-  .project-row-2:has(> :first-child:hover) {
-    grid-template-columns: 1fr 0fr;
-    column-gap: 0;
+  .project-panel-left {
+    right: calc(50% + 11rem + 1.5rem);
+    transform: translateX(0.5rem);
   }
-  .project-row-2:has(> :last-child:hover) {
-    grid-template-columns: 0fr 1fr;
-    column-gap: 0;
+  .project-panel-right {
+    left: calc(50% + 11rem + 1.5rem);
+    transform: translateX(-0.5rem);
+  }
+  .project-panel-inner {
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 0.25rem 0.5rem 0.25rem 0;
+    border-left: 1px solid color-mix(in oklab, var(--color-ink) 18%, transparent);
+    padding-left: 1.25rem;
+  }
+  .project-panel-right .project-panel-inner {
+    border-left: 0;
+    border-right: 1px solid color-mix(in oklab, var(--color-ink) 18%, transparent);
+    padding-left: 0;
+    padding-right: 1.25rem;
+  }
+  .project-panel-inner section {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .project-row-side:has(.project-row-tiles > :nth-child(1):hover)
+    .project-panel-left {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+  .project-row-side:has(.project-row-tiles > :nth-child(2):hover)
+    .project-panel-right {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
   }
 }
 

@@ -7,10 +7,9 @@ import { MediaPlaceholder } from "./MediaPlaceholder";
 
 type Props = {
   project: Project;
-  children?: React.ReactNode;
 };
 
-export function ProjectCard({ project, children }: Props) {
+export function ProjectCard({ project }: Props) {
   const [hover, setHover] = useState(false);
   const num = String(project.order).padStart(2, "0");
 
@@ -43,10 +42,10 @@ export function ProjectCard({ project, children }: Props) {
                 src={`https://i.ytimg.com/vi/${project.youtubeId}/maxresdefault.jpg`}
                 alt={project.title}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center border border-paper/70 bg-paper/15 font-mono text-base text-paper backdrop-blur-sm">
+              <div className="pointer-events-none absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center border border-paper/70 bg-paper/15 font-mono text-sm text-paper backdrop-blur-sm">
                 &#9654;
               </div>
             </>
@@ -58,51 +57,31 @@ export function ProjectCard({ project, children }: Props) {
         )}
       </div>
 
-      <div className="relative z-20 space-y-5 p-8 sm:p-10 lg:p-12">
+      <div className="relative z-20 space-y-3 p-5 sm:p-6">
         <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.14em] text-ink/55">
           <span>
             {num} &middot; {project.domain}
           </span>
           <span>{project.year}</span>
         </div>
-
-        <h3 className="text-2xl font-medium leading-tight tracking-tight sm:text-3xl lg:text-4xl">
+        <h3 className="text-xl font-medium leading-tight tracking-tight sm:text-2xl">
           {project.title}
         </h3>
-
-        <p className="text-base leading-relaxed text-ink/75 sm:text-lg">
+        <p className="text-sm leading-relaxed text-ink/75 sm:text-base">
           {project.tagline}
         </p>
-
-        <div className="flex flex-wrap gap-2 pt-1">
-          {project.tags.slice(0, 5).map((tag) => (
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="border border-ink/15 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-ink/65"
+              className="border border-ink/15 px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.1em] text-ink/65"
             >
               {tag}
             </span>
           ))}
         </div>
-
         <div
-          aria-hidden={!hover}
-          className="grid transition-[grid-template-rows] duration-500 ease-out"
-          style={{ gridTemplateRows: hover ? "1fr" : "0fr" }}
-        >
-          <div className="overflow-hidden">
-            <div
-              className={`mt-6 space-y-7 border-t border-ink/15 pt-6 transition-opacity duration-300 ${
-                hover ? "opacity-100 delay-200" : "opacity-0"
-              }`}
-            >
-              {children}
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={`pt-2 font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
+          className={`pt-1 font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
             hover ? "text-ink" : "text-ink/55"
           }`}
         >

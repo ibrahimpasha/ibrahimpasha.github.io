@@ -92,21 +92,34 @@ function Projects() {
             {projects.length} projects
           </span>
         </header>
-        <div className="flex flex-col gap-10 lg:gap-14">
+        <div className="flex flex-col gap-12">
           {chunk(projects, 2).map((row, i) => (
-            <div
-              key={i}
-              className={
-                row.length === 2
-                  ? "project-row-2 grid grid-cols-1 gap-10"
-                  : "grid grid-cols-1 gap-10"
-              }
-            >
-              {row.map((p) => (
-                <ProjectCard key={p.slug} project={p}>
-                  {bodyBySlug[p.slug]}
-                </ProjectCard>
-              ))}
+            <div key={i} className="project-row-side relative">
+              {row[0] ? (
+                <aside
+                  aria-hidden
+                  className="project-panel project-panel-left"
+                >
+                  <div className="project-panel-inner">
+                    {bodyBySlug[row[0].slug]}
+                  </div>
+                </aside>
+              ) : null}
+              {row[1] ? (
+                <aside
+                  aria-hidden
+                  className="project-panel project-panel-right"
+                >
+                  <div className="project-panel-inner">
+                    {bodyBySlug[row[1].slug]}
+                  </div>
+                </aside>
+              ) : null}
+              <div className="project-row-tiles">
+                {row.map((p) => (
+                  <ProjectCard key={p.slug} project={p} />
+                ))}
+              </div>
             </div>
           ))}
         </div>
