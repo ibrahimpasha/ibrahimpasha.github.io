@@ -84,7 +84,7 @@ function Projects() {
   return (
     <section id="projects" className="border-b border-ink/15">
       <div className="mx-auto max-w-[120rem] px-4 py-20 sm:px-6 lg:px-8">
-        <header className="mx-auto mb-10 flex w-full max-w-[58rem] items-baseline justify-between">
+        <header className="mx-auto mb-10 flex w-full max-w-[66rem] items-baseline justify-between">
           <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-ink/55 sm:text-sm">
             Selected work
           </h2>
