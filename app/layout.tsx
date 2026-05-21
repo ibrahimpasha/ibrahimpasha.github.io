@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Ibrahim Mohammad — Robotics & Embodied AI",
   description:
-    "Applied Scientist II at Amazon building bipedal and mobile robots. RL, sim-to-real, embedded VLA on Jetson.",
+    "Applied Scientist at Amazon building bipedal and mobile robots. RL, sim-to-real, embedded VLA on Jetson.",
 };
 
 export default function RootLayout({

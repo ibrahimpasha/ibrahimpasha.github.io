@@ -46,8 +46,8 @@ function Hero() {
             Building robots that learn to move.
           </h1>
           <p className="max-w-prose text-sm leading-relaxed text-ink/75 sm:text-base">
-            Applied Scientist II at Amazon. RL, sim-to-real, and embedded VLA
-            on Jetson.
+            Applied Scientist at Amazon. RL, sim-to-real, and embedded VLA on
+            Jetson.
           </p>
           <div className="flex flex-wrap gap-3 pt-1">
             <Link
@@ -137,17 +137,16 @@ function About() {
         </h2>
         <div className="space-y-5 text-base leading-relaxed text-ink/85 sm:text-lg">
           <p>
-            I&rsquo;m a robotics engineer and applied scientist focused on
-            getting policies trained in simulation to actually work on physical
-            hardware. My recent work spans bipedal locomotion with RL,
-            finetuning robotic foundation models, and squeezing real-time
-            inference onto edge devices like the Jetson Nano and Orin.
+            I&rsquo;m an applied scientist at Amazon who builds robots on
+            nights and weekends. My focus is getting policies trained in
+            simulation to actually work on physical hardware &mdash; bipedal
+            locomotion with RL, finetuning robotic foundation models, and
+            squeezing real-time inference onto edge devices like Jetson.
           </p>
           <p>
-            Day job is Applied Scientist II at Amazon. Nights and weekends are
-            for building cute robots and contributing to the open-source
-            robotics ecosystem alongside the Hugging Face LeRobot, NVIDIA, and
-            BDX Mini communities.
+            Day job is multi-agent AI systems, LLM fine-tuning, and
+            large-scale ML pipelines. The robotics is where I go to scratch
+            the itch of working with the physical world.
           </p>
           <dl className="grid grid-cols-2 gap-y-3 pt-4 font-mono text-xs uppercase tracking-[0.12em]">
             <dt className="text-ink/45">Learning</dt>
