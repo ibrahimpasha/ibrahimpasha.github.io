@@ -23,3 +23,16 @@ body {
   background: var(--color-ink);
   color: var(--color-paper);
 }
+
+@media (min-width: 1024px) {
+  .project-row {
+    transition: grid-template-columns 500ms ease-out;
+  }
+  .project-row:has(> :nth-child(1):hover) {
+    grid-template-columns: 1fr 0fr;
+  }
+  .project-row:has(> :nth-child(2):hover) {
+    grid-template-columns: 0fr 1fr;
+  }
+}
+

@@ -19,7 +19,7 @@ export function ProjectCard({ project, children }: Props) {
       id={project.slug}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="group relative overflow-hidden border border-ink/15 bg-paper transition-colors hover:border-ink"
+      className="group relative min-w-0 overflow-hidden border border-ink/15 bg-paper transition-colors hover:border-ink"
     >
       <Link
         href={`/projects/${project.slug}/`}

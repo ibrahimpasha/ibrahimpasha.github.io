@@ -15,6 +15,12 @@ const bodyBySlug: Record<string, React.ReactNode> = {
   hackathon: <HackathonBody />,
 };
 
+function chunk<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
 export default function Home() {
   return (
     <>
@@ -86,11 +92,20 @@ function Projects() {
             {projects.length} projects
           </span>
         </header>
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p}>
-              {bodyBySlug[p.slug]}
-            </ProjectCard>
+        <div className="flex flex-col gap-10 lg:gap-14">
+          {chunk(projects, 2).map((row, i) => (
+            <div
+              key={i}
+              className={`project-row grid gap-10 lg:gap-14 ${
+                row.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-1"
+              }`}
+            >
+              {row.map((p) => (
+                <ProjectCard key={p.slug} project={p}>
+                  {bodyBySlug[p.slug]}
+                </ProjectCard>
+              ))}
+            </div>
           ))}
         </div>
       </div>
