@@ -31,7 +31,7 @@ function Hero() {
   const bdx = getProject("bdx-droid");
   return (
     <section className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1fr_1.25fr] md:items-center md:gap-14 md:py-24">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-[1fr_1.25fr] md:items-center md:gap-14 md:py-24">
         <div className="space-y-5">
           <div className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
             Robotics &middot; Embodied AI
@@ -77,7 +77,7 @@ function Hero() {
 function Projects() {
   return (
     <section id="projects" className="border-b border-ink/15">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-[92rem] px-6 py-20 sm:px-8 lg:px-10">
         <header className="mb-10 flex items-baseline justify-between">
           <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-ink/55 sm:text-sm">
             Selected work
@@ -86,7 +86,7 @@ function Projects() {
             {projects.length} projects
           </span>
         </header>
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {projects.map((p) => (
             <ProjectCard key={p.slug} project={p}>
               {bodyBySlug[p.slug]}
@@ -101,7 +101,7 @@ function Projects() {
 function About() {
   return (
     <section id="about" className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           About
         </h2>
@@ -158,7 +158,7 @@ function Press() {
 
   return (
     <section id="press" className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           Featured
         </h2>
@@ -209,7 +209,7 @@ function Contact() {
 
   return (
     <section id="contact">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           Contact
         </h2>

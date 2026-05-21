@@ -58,7 +58,7 @@ export function ProjectCard({ project, children }: Props) {
         )}
       </div>
 
-      <div className="relative z-20 space-y-4 p-7 sm:p-8">
+      <div className="relative z-20 space-y-5 p-8 sm:p-10 lg:p-12">
         <div className="flex items-center justify-between font-mono text-xs uppercase tracking-[0.14em] text-ink/55">
           <span>
             {num} &middot; {project.domain}
@@ -66,7 +66,7 @@ export function ProjectCard({ project, children }: Props) {
           <span>{project.year}</span>
         </div>
 
-        <h3 className="text-2xl font-medium leading-tight tracking-tight sm:text-3xl">
+        <h3 className="text-2xl font-medium leading-tight tracking-tight sm:text-3xl lg:text-4xl">
           {project.title}
         </h3>
 

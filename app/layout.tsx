@@ -41,7 +41,7 @@ export default function RootLayout({
 function SiteHeader() {
   return (
     <header className="border-b border-ink/15 bg-paper">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="text-sm font-medium tracking-tight">
           Ibrahim Mohammad
         </Link>
@@ -64,7 +64,7 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-ink/15">
-      <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-3 px-6 py-8 text-xs text-ink/60 md:flex-row md:items-center">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-8 text-xs text-ink/60 md:flex-row md:items-center">
         <div className="font-mono uppercase tracking-[0.14em]">
           Ibrahim Mohammad &middot; Robotics &middot; Embodied AI
         </div>
