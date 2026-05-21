@@ -50,6 +50,7 @@ export const projects: Project[] = [
       "CUDA 12.8",
     ],
     mediaPlaceholder: "LeKiwi + GR00T N1 inference on Jetson",
+    youtubeId: "xEyELB9Vrjc",
   },
   {
     slug: "act-chess",
