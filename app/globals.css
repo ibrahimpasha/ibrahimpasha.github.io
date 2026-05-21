@@ -49,19 +49,19 @@ body {
     top: 0;
     width: clamp(15rem, 16vw, 22rem);
     opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
     transition:
-      opacity 300ms ease-out,
-      transform 400ms ease-out;
+      opacity 200ms ease-out 120ms,
+      transform 400ms ease-out 120ms;
     z-index: 5;
     background: var(--color-paper);
   }
   .project-panel-left {
-    right: calc(50% + 29rem + 1rem);
+    right: calc(50% + 29rem);
     transform: translateX(0.5rem);
   }
   .project-panel-right {
-    left: calc(50% + 29rem + 1rem);
+    left: calc(50% + 29rem);
     transform: translateX(-0.5rem);
   }
   .project-panel-inner {
@@ -91,16 +91,22 @@ body {
     margin-top: 0;
   }
   .project-row-side:has(.project-row-tiles > :nth-child(1):hover)
-    .project-panel-left {
+    .project-panel-left,
+  .project-panel-left:hover {
     opacity: 1;
-    pointer-events: auto;
     transform: translateX(0);
+    transition:
+      opacity 200ms ease-out 0ms,
+      transform 300ms ease-out 0ms;
   }
   .project-row-side:has(.project-row-tiles > :nth-child(2):hover)
-    .project-panel-right {
+    .project-panel-right,
+  .project-panel-right:hover {
     opacity: 1;
-    pointer-events: auto;
     transform: translateX(0);
+    transition:
+      opacity 200ms ease-out 0ms,
+      transform 300ms ease-out 0ms;
   }
 }
 

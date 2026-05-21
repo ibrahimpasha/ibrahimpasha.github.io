@@ -222,18 +222,18 @@ function Contact() {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ibrahim-mohammad/",
-      text: "/in/ibrahim-mohammad",
+      href: "https://www.linkedin.com/in/heyitsme/",
+      text: "/in/heyitsme",
     },
     {
       label: "GitHub",
-      href: "https://github.com/",
-      text: "TBD — add username in app/page.tsx",
+      href: "https://github.com/ibrahimpasha",
+      text: "@ibrahimpasha",
     },
     {
       label: "Hugging Face",
-      href: "https://huggingface.co/",
-      text: "TBD — add username in app/page.tsx",
+      href: "https://huggingface.co/ibru",
+      text: "@ibru",
     },
   ];
 
