@@ -96,9 +96,11 @@ function Projects() {
           {chunk(projects, 2).map((row, i) => (
             <div
               key={i}
-              className={`project-row grid gap-10 lg:gap-14 ${
-                row.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-1"
-              }`}
+              className={
+                row.length === 2
+                  ? "project-row-2 grid grid-cols-1 gap-10"
+                  : "grid grid-cols-1 gap-10"
+              }
             >
               {row.map((p) => (
                 <ProjectCard key={p.slug} project={p}>
