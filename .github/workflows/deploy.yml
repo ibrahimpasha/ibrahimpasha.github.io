@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Detect site type
+        id: site
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then
+            echo "is_project_site=false" >> "$GITHUB_OUTPUT"
+            echo "repo_name=" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_project_site=true" >> "$GITHUB_OUTPUT"
+            echo "repo_name=$REPO_NAME" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        env:
+          GITHUB_PROJECT_SITE: ${{ steps.site.outputs.is_project_site }}
+          GITHUB_REPO_NAME: ${{ steps.site.outputs.repo_name }}
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

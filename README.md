@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Robotics Portfolio — Ibrahim Mohammad
 
-## Getting Started
+Static portfolio site for showcasing robotics and embodied AI work.
+Built with Next.js 16 + Tailwind v4, exported as static HTML, hosted on
+GitHub Pages.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Project metadata lives in `lib/projects.ts`. Each project also has its own
+detail page at `app/projects/<slug>/page.tsx`. To add a new project:
 
-## Learn More
+1. Add an entry to `projects` in `lib/projects.ts`.
+2. Create `app/projects/<slug>/page.tsx` following any existing one as a
+   template.
 
-To learn more about Next.js, take a look at the following resources:
+To swap the BDX video / project media for real footage, replace the
+`MediaPlaceholder` usage with a `<video>` or `<img>` tag pointing at a file
+under `public/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to GitHub Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site auto-detects whether you're hosting on a **user site**
+(`<username>.github.io`) or a **project site** (any other repo name) and
+configures `basePath`/`assetPrefix` accordingly via the workflow.
 
-## Deploy on Vercel
+### Recommended — user site (clean root URL)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create a public GitHub repo named `<your-username>.github.io`.
+2. Push this directory to its `main` branch.
+3. In repo Settings → Pages, set **Source** to **GitHub Actions**.
+4. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds
+   and deploys automatically. The site lives at
+   `https://<your-username>.github.io`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Alternative — project site
+
+1. Create any repo (e.g. `portfolio`).
+2. Push this directory to its `main` branch.
+3. In repo Settings → Pages, set **Source** to **GitHub Actions**.
+4. The site lives at `https://<your-username>.github.io/<repo-name>/`.
+
+## TODOs before going public
+
+- Replace media placeholders in `app/page.tsx` and each project page with
+  real BDX / LeKiwi / ACT footage. Put videos in `public/` and reference
+  them with regular `<video>` tags.
+- Set real GitHub and Hugging Face profile URLs in the `Contact` section
+  of `app/page.tsx`.
+- Update the `Press` items in `app/page.tsx` with real links if desired.

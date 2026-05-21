@@ -1,65 +1,237 @@
-import Image from "next/image";
+import Link from "next/link";
+import { projects, getProject } from "@/lib/projects";
+import { MediaPlaceholder } from "./components/MediaPlaceholder";
+import { YouTubeEmbed } from "./components/YouTubeEmbed";
+import { ProjectCard } from "./components/ProjectCard";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <Hero />
+      <Projects />
+      <About />
+      <Press />
+      <Contact />
+    </>
+  );
+}
+
+function Hero() {
+  const bdx = getProject("bdx-droid");
+  return (
+    <section className="border-b border-ink/15">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1fr_1.25fr] md:items-center md:gap-14 md:py-24">
+        <div className="space-y-5">
+          <div className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
+            Robotics &middot; Embodied AI
+          </div>
+          <h1 className="text-2xl font-medium leading-[1.1] tracking-tight sm:text-3xl md:text-4xl">
+            Building robots that learn to move.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-prose text-sm leading-relaxed text-ink/75 sm:text-base">
+            Applied Scientist II at Amazon. RL, sim-to-real, and embedded VLA
+            on Jetson.
           </p>
+          <div className="flex flex-wrap gap-3 pt-1">
+            <Link
+              href="#projects"
+              className="border border-ink bg-ink px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] text-paper transition-colors hover:bg-transparent hover:text-ink"
+            >
+              View projects
+            </Link>
+            <Link
+              href="#contact"
+              className="border border-ink/30 px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink/75 transition-colors hover:border-ink hover:text-ink"
+            >
+              Get in touch
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+        <div>
+          {bdx?.youtubeId ? (
+            <YouTubeEmbed
+              videoId={bdx.youtubeId}
+              variant="hero-loop"
+              title="BDX Droid walking"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ) : (
+            <MediaPlaceholder label="BDX droid walking loop" />
+          )}
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="border-b border-ink/15">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        <header className="mb-10 flex items-baseline justify-between">
+          <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-ink/55 sm:text-sm">
+            Selected work
+          </h2>
+          <span className="font-mono text-xs text-ink/40">
+            {projects.length} projects
+          </span>
+        </header>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="border-b border-ink/15">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+        <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
+          About
+        </h2>
+        <div className="space-y-5 text-base leading-relaxed text-ink/85 sm:text-lg">
+          <p>
+            I&rsquo;m a robotics engineer and applied scientist focused on
+            getting policies trained in simulation to actually work on physical
+            hardware. My recent work spans bipedal locomotion with RL,
+            finetuning robotic foundation models, and squeezing real-time
+            inference onto edge devices like the Jetson Nano and Orin.
+          </p>
+          <p>
+            Day job is Applied Scientist II at Amazon. Nights and weekends are
+            for building cute robots and contributing to the open-source
+            robotics ecosystem alongside the Hugging Face LeRobot, NVIDIA, and
+            BDX Mini communities.
+          </p>
+          <dl className="grid grid-cols-2 gap-y-3 pt-4 font-mono text-xs uppercase tracking-[0.12em]">
+            <dt className="text-ink/45">Learning</dt>
+            <dd className="text-ink/85">PPO &middot; ACT &middot; VLA finetune</dd>
+            <dt className="text-ink/45">Simulation</dt>
+            <dd className="text-ink/85">MuJoCo Playground &middot; Isaac Lab</dd>
+            <dt className="text-ink/45">Deployment</dt>
+            <dd className="text-ink/85">Jetson Orin &middot; Jetson Nano Super</dd>
+            <dt className="text-ink/45">Hardware</dt>
+            <dd className="text-ink/85">3D print &middot; assemble &middot; wire</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Press() {
+  const items = [
+    {
+      source: "Open Robotics",
+      title:
+        "Featured at the NVIDIA × Seeed Studio × Hackster Embodied AI Hackathon",
+      meta: "2025",
+    },
+    {
+      source: "NVIDIA",
+      title:
+        "Working alongside Jim Fan and Dustin Franklin's GR00T / Jetson teams",
+      meta: "2025",
+    },
+    {
+      source: "Hugging Face LeRobot",
+      title: "Open-source ACT chess manipulation dataset and writeup",
+      meta: "2024",
+    },
+  ];
+
+  return (
+    <section id="press" className="border-b border-ink/15">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+        <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
+          Featured
+        </h2>
+        <ul className="divide-y divide-ink/15">
+          {items.map((item, i) => (
+            <li
+              key={i}
+              className="grid grid-cols-[110px_1fr_60px] gap-4 py-4 text-sm sm:grid-cols-[150px_1fr_80px] sm:text-base"
+            >
+              <span className="font-mono text-xs uppercase tracking-[0.12em] text-ink/55">
+                {item.source}
+              </span>
+              <span className="text-ink/85">{item.title}</span>
+              <span className="text-right font-mono text-xs text-ink/55">
+                {item.meta}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const links = [
+    {
+      label: "Email",
+      href: "mailto:ibrahimpasha.m.d@gmail.com",
+      text: "ibrahimpasha.m.d@gmail.com",
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/ibrahim-mohammad/",
+      text: "/in/ibrahim-mohammad",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/",
+      text: "TBD — add username in app/page.tsx",
+    },
+    {
+      label: "Hugging Face",
+      href: "https://huggingface.co/",
+      text: "TBD — add username in app/page.tsx",
+    },
+  ];
+
+  return (
+    <section id="contact">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+        <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
+          Contact
+        </h2>
+        <div className="space-y-6">
+          <p className="max-w-prose text-base leading-relaxed text-ink/85 sm:text-lg">
+            Open to conversations with robotics labs, startups, and research
+            teams working on embodied AI, locomotion, manipulation, and
+            sim-to-real. The fastest way to reach me is email.
+          </p>
+          <ul className="divide-y divide-ink/15 border-y border-ink/15">
+            {links.map((l) => (
+              <li
+                key={l.label}
+                className="grid grid-cols-[110px_1fr] items-center gap-4 py-3 text-sm sm:grid-cols-[150px_1fr] sm:text-base"
+              >
+                <span className="font-mono text-xs uppercase tracking-[0.12em] text-ink/55">
+                  {l.label}
+                </span>
+                <a
+                  href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    l.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="text-ink/85 underline-offset-4 hover:underline"
+                >
+                  {l.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 }
