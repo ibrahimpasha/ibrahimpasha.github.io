@@ -80,12 +80,25 @@ export function ProjectCard({ project }: Props) {
             </span>
           ))}
         </div>
-        <div
-          className={`pt-1 font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
-            hover ? "text-ink" : "text-ink/55"
-          }`}
-        >
-          Read full writeup &rarr;
+        <div className="flex flex-wrap items-center gap-3 pt-1">
+          <span
+            className={`font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
+              hover ? "text-ink" : "text-ink/55"
+            }`}
+          >
+            Read full writeup &rarr;
+          </span>
+          {project.linkedinUrl ? (
+            <a
+              href={project.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-30 inline-flex items-center gap-1 border border-ink/25 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-ink/70 transition-colors hover:border-ink hover:text-ink"
+            >
+              LinkedIn
+              <span aria-hidden>&#8599;</span>
+            </a>
+          ) : null}
         </div>
       </div>
     </article>

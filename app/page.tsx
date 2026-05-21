@@ -147,7 +147,7 @@ function Projects() {
 function About() {
   return (
     <section id="about" className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr] md:items-baseline">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           About
         </h2>
@@ -161,8 +161,7 @@ function About() {
           </p>
           <p>
             Day job is multi-agent AI systems, LLM fine-tuning, and
-            large-scale ML pipelines. The robotics is where I go to scratch
-            the itch of working with the physical world.
+            large-scale ML pipelines.
           </p>
           <dl className="grid grid-cols-2 gap-y-3 pt-4 font-mono text-xs uppercase tracking-[0.12em]">
             <dt className="text-ink/45">Learning</dt>
@@ -203,7 +202,7 @@ function Press() {
 
   return (
     <section id="press" className="border-b border-ink/15">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr] md:items-baseline">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           Featured
         </h2>
@@ -254,7 +253,7 @@ function Contact() {
 
   return (
     <section id="contact">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1fr] md:items-baseline">
         <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-ink/55">
           Contact
         </h2>
